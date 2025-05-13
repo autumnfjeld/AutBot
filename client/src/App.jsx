@@ -45,10 +45,10 @@ function App() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
       <div className="flex space-x-4 mb-6">
         <a href="http://autumnfjeld.com" target="_blank">
-          <img src={autLogo} className="h-12" alt="Vite logo" />
+          <img src={autLogo} className="h-12" alt="AutBot logo" />
         </a>
       </div>
-      <h1 className="text-4xl font-bold mb-6">Aut Bot</h1>
+      <h1 className="text-4xl font-bold mb-6 text-indigo-900">Aut Bot</h1>
       <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <input
