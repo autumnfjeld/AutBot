@@ -1,4 +1,10 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap'); */
+:root {
+    --font-shrikhand: 'Shrikhand', cursive;
+  }
 
-/* Custom styles can go here */
-
+/* Custom styles go here */
+  body {
+    font-family: var(--font-shrikhand);
+  }
