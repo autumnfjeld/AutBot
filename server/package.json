@@ -2,6 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Express server for Aut Bot",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
