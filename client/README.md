@@ -1,4 +1,17 @@
-# React + Vite
+# AutBot
+
+A personal project to explore Retrieval-Augmented Generation (RAG). The AutBot Resume App.
+
+🚧 A work in progress.
+
+## Aut Log
+
+* Started with npm create vite@latest . -- --template react
+* Use tailwind
+* Switch to Python server
+* llamaindex to integrate LLM with own AutData
+
+<!-- # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -10,10 +23,6 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ -->
 
 
-
-# Aut Log
-
-* npm create vite@latest . -- --template react
-* npm run dev
