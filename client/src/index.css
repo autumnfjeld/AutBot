@@ -4,6 +4,15 @@
     --font-shrikhand: 'Shrikhand', cursive;
   }
 
+  @layer theme {
+    :root {
+      --color-prussian-blue: #13293d;
+      --color-reseda-green: #657153;
+      --color-asparagus: #8aaa79;
+      --color-steel-blue: #2081c3;
+      --color-magnolia: #f7f0f5;
+    }
+  }
 /* Custom styles go here */
   body {
     font-family: var(--font-shrikhand);
