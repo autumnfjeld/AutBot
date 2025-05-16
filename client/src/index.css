@@ -1,19 +1,28 @@
-@import "tailwindcss";
-/* @import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap'); */
-:root {
-    --font-shrikhand: 'Shrikhand', cursive;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
-  @layer theme {
-    :root {
-      --color-prussian-blue: #13293d;
-      --color-reseda-green: #657153;
-      --color-asparagus: #8aaa79;
-      --color-steel-blue: #2081c3;
-      --color-magnolia: #f7f0f5;
-    }
+
+@layer theme {
+  :root {
+    --color-prussian-blue: #13293d;
+    --color-reseda-green: #657153;
+    --color-asparagus: #8aaa79;
+    --color-steel-blue: #2081c3;
+    --color-magnolia: #f7f0f5;
+    /* Add these font tokens: */
+    --font-heading: 'Shrikhand', cursive;
+    --font-body: system-ui, sans-serif;
   }
+}
+
+@import "tailwindcss";
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
 /* Custom styles go here */
-  body {
-    font-family: var(--font-shrikhand);
-  }
