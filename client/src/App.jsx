@@ -15,6 +15,8 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!inputValue.trim()) return
+
     setIsLoading(true)
     setError('')
     
@@ -42,27 +44,44 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-stone-200 p-6">
-      <h1 className="text-4xl font-heading mb-6 text-sky-700">The Aut Bot</h1>
-      <div className="flex space-x-4 mb-6">
-        <a href="http://autumnfjeld.com" target="_blank">
-          <img src={autLogo} className="h-48 rounded-full border-3 border-lime-700" alt="AutBot logo" />
-        </a>
-      </div>
-      <div className="bg-magnolia shadow-md rounded-lg p-6 w-full max-w-md">
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-          <input
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Ask the AutBot..."
-            className="p-3 border-2 border-stone-400 rounded-md text-md"
+    <main className="flex flex-col items-center justify-center min-h-screen bg-stone-200 p-6">
+      <header className="text-center mb-8">
+        <h1 className="text-4xl font-heading mb-4 text-sky-700">The Aut Bot</h1>
+        <a 
+          href="http://autumnfjeld.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-block"
+        >
+          <img 
+            src={autLogo} 
+            className="h-48 rounded-full border-3 border-lime-700 hover:border-lime-900 transition-colors" 
+            alt="AutBot logo" 
           />
+        </a>
+        <p className="text-stone-600 mt-4">An interactive resume for Autumn Fjeld.</p>
+      </header>
+
+      <section className="w-full max-w-md">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="relative">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Ask the AutBot..."
+              className="w-full p-3 border-2 border-stone-400 rounded-md text-md focus:outline-none focus:border-lime-700 transition-colors"
+              disabled={isLoading}
+            />
+          </div>
+          
           <button 
             type="submit"
             disabled={isLoading || !inputValue.trim()}
-            className={`p-3 text-white text-lg font-medium rounded-md ${
-              isLoading ? ' cursor-not-allowed' : 'bg-lime-700 hover:bg-lime-900'
+            className={`w-full p-3 text-white text-lg font-medium rounded-md transition-colors ${
+              isLoading 
+                ? 'bg-stone-400 cursor-not-allowed' 
+                : 'bg-lime-700 hover:bg-lime-900'
             }`}
           >
             {isLoading ? 'Thinking...' : 'Ask'}
@@ -70,18 +89,29 @@ function App() {
         </form>
 
         {error && (
-          <p className="text-red-500 mt-4">{error}</p>
+          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-600">{error}</p>
+          </div>
         )}
 
         {response && (
-          <div className="mt-6 p-4 bg-indigo-100 rounded-md">
-            <p>{response}</p>
-          </div> 
+          <div className="mt-6 p-4 bg-white border border-stone-200 rounded-md shadow-sm">
+            <p className="text-stone-700">{response}</p>
+          </div>
         )}
-      </div>
-      <p className="mt-8 text-green-700"></p>
-      <a href="https://github.com/autumnfjeld/AutBot" target="_blank" className="text-sky-700 hover:text-blue-700">github.com/autumnfjeld/AutBot</a>
-    </div>
+      </section>
+
+      <footer className="mt-8">
+        <a 
+          href="https://github.com/autumnfjeld/AutBot" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-sm text-sky-700 hover:text-sky-900 transition-colors"
+        >
+          github.com/autumnfjeld/AutBot
+        </a>
+      </footer>
+    </main>
   )
 }
 
