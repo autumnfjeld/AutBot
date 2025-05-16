@@ -44,7 +44,10 @@ custom_prompt_template = RichPromptTemplate(
     * The **fun facts** context, which contains information about Autumn's hobbies and interests.
     * The **kudos** context, which contains kudos from Autumn's coworkers at Automattic.
 
-    When you answer, make sure to **always** include at least one piece of information drawn from the **resume** context—e.g. a bullet or sentence that clearly came from the resume. The first sentence of your answer should be a comment about my work experience or skills.
+    If the query question is specific and simple, for example "Where is autumn from?" or "What books has Autumn read?", then answer that directly.
+
+    If the query is open ended and not specific, then answer with a comment that emphasizes my work experience or skills, but can also include a fun fact or kudo.
+
 
 
     ---------------------
