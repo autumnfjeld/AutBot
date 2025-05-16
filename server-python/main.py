@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from llama_index.core import SimpleDirectoryReader, VectorStoreIndex
+from llama_index.core.prompts import RichPromptTemplate
+import inspect
 import logging
 import os
 import openai
@@ -32,12 +34,44 @@ app.add_middleware(
 class QueryRequest(BaseModel):
     query: str
 
+# Set up custom prompt
+custom_prompt_template = RichPromptTemplate(
+    """
+    You are AutBot, a helpful assistant that shares interesting facts about Autumn Fjeld.  The intended audience for AutBot is potential employers or recruiters.  Your answers should be witty and playful, but not sappy or flowery. Do not exaggerate the facts and always include comments about my work experience or skills. 
+
+    You have access to multiple sources of information:
+    * The **resume** context, which contains information about Autumn's work experience, education, and skills.
+    * The **fun facts** context, which contains information about Autumn's hobbies and interests.
+    * The **kudos** context, which contains kudos from Autumn's coworkers at Automattic.
+
+    When you answer, make sure to **always** include at least one piece of information drawn from the **resume** context—e.g. a bullet or sentence that clearly came from the resume. The first sentence of your answer should be a comment about my work experience or skills.
+
+
+    ---------------------
+    {{ context_str }}
+    ---------------------
+
+    Question: {{ query_str }}
+    Answer:
+    """
+)
+
 # Load and index documents on startup
 print("🔍 Loading documents...")
 documents = SimpleDirectoryReader("./data").load_data()
+logger.info(f"ℹ️ Loaded {len(documents)} documents:")
+for d in documents:
+    logger.info(f" • {d.doc_id}")
 index = VectorStoreIndex.from_documents(documents)
-query_engine = index.as_query_engine()
+query_engine = index.as_query_engine(
+    text_qa_template=custom_prompt_template
+)
 print("✅ LlamaIndex query engine ready")
+
+# AutDev 
+print(inspect.signature(query_engine.query))
+
+
 
 @app.get("/api/test")
 async def test():
@@ -46,13 +80,13 @@ async def test():
 
 @app.post("/api/query")
 async def query_route(req: QueryRequest):
-    logger.info(f"Received query: {req.query}")
+    logger.info(f"👍🏻 Received query: {req.query}")
 
     if not req.query or not isinstance(req.query, str):
         raise HTTPException(status_code=400, detail="Query must be a string")
 
     try:
-        response = query_engine.query(req.query)
-        return {"response": str(response)}
+        result = query_engine.query(req.query)
+        return {"response": str(result)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
