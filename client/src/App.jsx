@@ -63,7 +63,7 @@ function App() {
             alt="AutBot logo" 
           />
         </a>
-        <p className="text-stone-600 mt-4">An interactive resume for Autumn Fjeld.</p>
+        <p className="text-stone-600 mt-4">Autumn's interactive resume.</p>
       </header>
 
       <section className="w-full max-w-md">
@@ -99,21 +99,37 @@ function App() {
         )}
 
         {response && (
-          <div className="mt-6 p-4 bg-white border border-stone-200 rounded-md shadow-sm">
+          <div className="mt-6 p-4 bg-stone-100 border border-stone-200 rounded-md shadow-sm">
             <p className="text-stone-700">{response}</p>
           </div>
         )}
       </section>
 
-      <footer className="mt-8">
-        <a 
-          href="https://github.com/autumnfjeld/AutBot" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-sm text-sky-700 hover:text-sky-900 transition-colors"
-        >
-          github.com/autumnfjeld/AutBot
-        </a>
+      <footer className="mt-24 w-full max-w-md">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="flex items-center space-x-6">
+            <a 
+              href="https://github.com/autumnfjeld/AutBot" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-sky-700 hover:text-sky-900 transition-colors"
+            >
+      
+              <span className="text-sm font-medium">AutBot on GitHub</span>
+            </a>
+            <a
+              href="http://autumnfjeld.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-sky-700 hover:text-sky-900 transition-colors"
+            >
+              autumnfjeld.com
+            </a>
+          </div>
+          <div className="text-xs text-stone-500">
+            © {new Date().getFullYear()} Autumn Fjeld
+          </div>
+        </div>
       </footer>
     </main>
   )
