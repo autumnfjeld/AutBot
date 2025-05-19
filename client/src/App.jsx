@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import autLogo from './assets/autbot-2.png'
+import autLogo from './assets/aut-ustwo.png'
 import './index.css'
 
 
