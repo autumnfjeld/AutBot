@@ -2,6 +2,10 @@ import { useState } from 'react'
 import autLogo from './assets/autbot-2.png'
 import './index.css'
 
+
+// Read the Vite env var (falls back to localhost in dev)
+const API_BASE = import.meta.env.VITE_API_BASE;
+
 function App() {
   const [inputValue, setInputValue] = useState('')
   const [response, setResponse] = useState('')
@@ -21,7 +25,7 @@ function App() {
     setError('')
     
     try {
-      const res = await fetch('http://localhost:3001/api/query', {
+      const res = await fetch(`${API_BASE}/api/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
