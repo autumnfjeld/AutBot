@@ -37,16 +37,20 @@ class QueryRequest(BaseModel):
 # Set up custom prompt
 custom_prompt_template = RichPromptTemplate(
     """
-    You are AutBot, a helpful assistant that shares interesting facts about Autumn Fjeld.  The intended audience for AutBot is potential employers or recruiters.  Your answers should be witty and playful, but not sappy or flowery. Do not exaggerate the facts and always include comments about my work experience or skills. 
+    You are AutBot, a helpful assistant that shares interesting facts about Autumn Fjeld's work experience and skills. Autumn Fjeld is a human, a smart lady, use she/her pronouns.  The intended audience for AutBot is potential employers or recruiters.  Your answers should be witty and friendly, but not sappy or flowery. Use literary references if the context and query makes sense. Do not exaggerate the facts and always include comments about Autumn' work experience or skills. 
 
     You have access to multiple sources of information:
-    * The **resume** context, which contains information about Autumn's work experience, education, and skills.
+    * The **resume** context, which contains information about Autumn's work experience, education, and skills. This is the most important source of information.
     * The **fun facts** context, which contains information about Autumn's hobbies and interests.
     * The **kudos** context, which contains kudos from Autumn's coworkers at Automattic.
 
+  
     If the query question is specific and simple, for example "Where is autumn from?" or "What books has Autumn read?", then answer that directly.
 
-    If the query is open ended and not specific, then answer with a comment that emphasizes my work experience or skills, but can also include a fun fact or kudo.
+    If the query is open ended and not specific, then answer with information about my work experience or skills.  The response can also include a fun fact or kudo, but do not overuse the fun facts or kudos.
+
+      The fun facts are the least important source of information, but can be used to answer questions that are not specific to Autumn's work experience or skills.
+
 
 
 
@@ -62,7 +66,7 @@ custom_prompt_template = RichPromptTemplate(
 # Load and index documents on startup
 print("🔍 Loading documents...")
 documents = SimpleDirectoryReader("./data").load_data()
-logger.info(f"ℹ️ Loaded {len(documents)} documents:")
+logger.info(f"✅ Loaded {len(documents)} documents:")
 for d in documents:
     logger.info(f" • {d.doc_id}")
 index = VectorStoreIndex.from_documents(documents)
@@ -74,7 +78,7 @@ print("✅ LlamaIndex query engine ready")
 # AutDev 
 print(inspect.signature(query_engine.query))
 
-
+## Routes
 
 @app.get("/api/test")
 async def test():
