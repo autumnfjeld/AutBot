@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import autLogo from './assets/aut-ustwo.png'
+import autLogo from './assets/aut-cartoon-from-miami.png'
 import './index.css'
 
 
@@ -48,7 +48,7 @@ function App() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-stone-200 p-6">
+    <main className="flex flex-col items-center justify-center min-h-screen p-6 robot-bg">
       <header className="text-center mb-8">
         <h1 className="text-4xl font-heading mb-4 text-sky-700">The Aut Bot</h1>
         <a 
@@ -74,7 +74,7 @@ function App() {
               value={inputValue}
               onChange={handleInputChange}
               placeholder="Ask the AutBot..."
-              className="w-full p-3 border-2 border-stone-400 rounded-md text-md focus:outline-none focus:border-lime-700 transition-colors"
+              className="w-full p-3 bg-stone-100 border-2 border-stone-400 rounded-md text-md focus:outline-none focus:border-lime-700 transition-colors"
               disabled={isLoading}
             />
           </div>
