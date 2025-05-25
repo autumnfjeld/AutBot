@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import autLogo from './assets/aut-cartoon-from-miami.png'
 import './index.css'
-
-
-// Read the Vite env var (falls back to localhost in dev)
-const API_BASE = import.meta.env.VITE_API_BASE;
+import { API_BASE } from './config.js'
 
 function App() {
   const [inputValue, setInputValue] = useState('')
