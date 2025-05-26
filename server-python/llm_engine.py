@@ -38,8 +38,20 @@ def load_weighted_documents():
     # Load all documents from data directory
     documents = SimpleDirectoryReader("./data").load_data()
     
-    # Assign weights based on file names/types
+    # Deduplicate documents based on file_name
+    seen_files = set()
+    unique_documents = []
+    
     for doc in documents:
+        filename = doc.metadata.get('file_name', '')
+        if filename not in seen_files:
+            seen_files.add(filename)
+            unique_documents.append(doc)
+        else:
+            logger.info(f"Skipping duplicate: {filename}")
+    
+    # Assign weights based on file names/types
+    for doc in unique_documents:
         filename = doc.metadata.get('file_name', '').lower()
         
         if 'resume' in filename or filename.endswith('.pdf'):
@@ -55,8 +67,8 @@ def load_weighted_documents():
             doc.metadata["doc_type"] = "funfacts"
             logger.info(f" • {filename} (funfacts, weight: 0.5)")
     
-    logger.info(f"✅ Loaded {len(documents)} documents with weights")
-    return documents
+    logger.info(f"✅ Loaded {len(unique_documents)} unique documents with weights")
+    return unique_documents
 
 # Load and index documents with weights
 documents = load_weighted_documents()
