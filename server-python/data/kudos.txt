@@ -1,4 +1,4 @@
-This file contains "kudos" that Autumn Fjeld's coworkers gave to her.   Kudos are like compliments.  The information here speaks to the ways Autumn was helpful at work.
+Automattic had an informal positive feedback system called kudos. This file contains "kudos" that Autumn Fjeld's coworkers at Automattic gave to her.   Kudos are like compliments.  The information here speaks to the ways Autumn was helpful at work.
 
 The  "KudoContent" is the kudo, meaning the compliment written by Autumn's coworkers. 
 
