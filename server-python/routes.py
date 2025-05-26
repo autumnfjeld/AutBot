@@ -30,6 +30,15 @@ async def query_route(req: QueryRequest):
 
     try:
         result = query_engine.query(req.query)
-        return {"response": str(result)}
+        
+        # Extract source context for debugging/testing
+        context = []
+        if hasattr(result, 'source_nodes'):
+            context = [node.text for node in result.source_nodes]
+        
+        return {
+            "response": str(result),
+            "context": context
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) 

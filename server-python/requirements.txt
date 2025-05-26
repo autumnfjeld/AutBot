@@ -3,3 +3,4 @@ llama-index
 openai
 python-dotenv==1.0.1
 uvicorn==0.29.0
+pytest==8.0.0
