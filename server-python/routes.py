@@ -1,16 +1,25 @@
 from fastapi import APIRouter, HTTPException
 from llm_engine import query_engine
 from models import QueryRequest
+from __version__ import __version__, CHANGELOG
 import logging
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+@router.get("/api/version")
+async def get_version():
+    """Get server version information"""
+    return {
+        "version": __version__,
+        "changelog": CHANGELOG
+    }
+
 @router.get("/api/test")
 async def test():
     logger.info("Test endpoint hit")
-    return {"message": "AutBot Python server is running!"}
+    return {"message": "AutBot Python server is running!", "version": __version__}
 
 @router.post("/api/query")
 async def query_route(req: QueryRequest):
