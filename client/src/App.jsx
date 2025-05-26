@@ -56,7 +56,7 @@ function App() {
         >
           <img 
             src={autLogo} 
-            className="h-48 rounded-full border-3 border-lime-700 hover:border-lime-900 transition-colors" 
+            className="h-48 rounded-full border-3 border-lime-700 hover:border-lime-900 transition-colors opacity-60" 
             alt="AutBot logo" 
           />
         </a>
