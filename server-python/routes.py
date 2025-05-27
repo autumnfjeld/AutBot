@@ -30,14 +30,22 @@ async def query_route(req: QueryRequest):
 
     try:
         result = query_engine.query(req.query)
+        response_text = str(result)
         
         # Extract source context for debugging/testing
         context = []
         if hasattr(result, 'source_nodes'):
             context = [node.text for node in result.source_nodes]
         
+        # Structured logging for easy extraction
+        logger.info(f"AUTBOT_QUERY: {req.query}")
+        logger.info(f"AUTBOT_RESPONSE: {response_text}")
+        logger.info(f"AUTBOT_CONTEXT: {len(context)} chunks ")
+        for i, chunk in enumerate(context):
+            logger.info(f"AUTBOT_CONTEXT_{i}: {chunk}")
+        
         return {
-            "response": str(result),
+            "response": response_text,
             "context": context
         }
     except Exception as e:

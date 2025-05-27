@@ -2,7 +2,8 @@
 
 Notable changes and learnings in the AutBot project
 
-## [Unreleased]
+### 2025 May 27
+- Added simple query and response logging and a daily cron job to make daily local copies of heroku logs.
 
 ### 2025 May 26
 - Organize server code into proper structure and separation of concerns
