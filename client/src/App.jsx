@@ -123,6 +123,17 @@ function App() {
               autumnfjeld.com
             </a>
           </div>
+          <div className="flex items-center space-x-6">
+            <a
+              // href={`${API_BASE}/api/resume`}
+              href="public/AutumnFjeld_Resume_20250527.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-lime-700 hover:text-lime-900 transition-colors"
+            >
+              Old fashioned resume
+            </a>
+          </div>
           <div className="text-xs text-stone-500">
             © {new Date().getFullYear()} Autumn Fjeld
           </div>
