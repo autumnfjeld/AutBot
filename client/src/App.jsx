@@ -70,7 +70,7 @@ function App() {
               type="text"
               value={inputValue}
               onChange={handleInputChange}
-              placeholder="Ask the AutBot..."
+              placeholder="Type here to ask the AutBot about Autumn."
               className="w-full p-3 bg-stone-100 border-2 border-stone-400 rounded-md text-md focus:outline-none focus:border-lime-700 transition-colors"
               disabled={isLoading}
             />
