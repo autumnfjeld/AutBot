@@ -13,7 +13,15 @@ This directory contains all the React components for the AutBot application, org
 - Handles user input and form submission
 - Manages its own input state
 - Receives `onSubmit` callback and `isLoading` prop from parent
+- Accepts `externalInputValue` prop to set input from sample prompts
 - Clears input after successful submission
+
+### `SamplePrompts.jsx`
+- Displays clickable example questions to help users get started
+- Contains four curated sample prompts about Autumn
+- Receives `onPromptClick` callback and `isLoading` prop from parent
+- Matches app styling with hover effects and disabled states
+- Pure presentational component with no internal state
 
 ### `ResponseDisplay.jsx`
 - Shows API responses and error messages
@@ -29,7 +37,7 @@ This directory contains all the React components for the AutBot application, org
 Components are exported through `index.js` for clean imports:
 
 ```jsx
-import { Header, QueryForm, ResponseDisplay, Footer } from './components'
+import { Header, QueryForm, ResponseDisplay, Footer, SamplePrompts } from './components'
 ```
 
 ## Design Principles

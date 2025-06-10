@@ -1,7 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function QueryForm({ onSubmit, isLoading }) {
+function QueryForm({ onSubmit, isLoading, externalInputValue }) {
   const [inputValue, setInputValue] = useState('')
+
+  // Update input when external value changes (from sample prompts)
+  useEffect(() => {
+    if (externalInputValue) {
+      setInputValue(externalInputValue)
+    }
+  }, [externalInputValue])
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value)
