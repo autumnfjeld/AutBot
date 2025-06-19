@@ -39,3 +39,4 @@ A personal project to explore Retrieval-Augmented Generation (RAG).  A tool to l
 * test `curl https://autbot-backend-f8bf47922e24.herokuapp.com/api/test`
 * https://autbot-backend-f8bf47922e24.herokuapp.com/
 *  `heroku logs --tail` 
+*  Get a log dump `heroku logs --app autbot-backend | grep "AUTBOT" > logs-{date}.txt`
