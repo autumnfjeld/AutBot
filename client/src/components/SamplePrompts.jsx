@@ -5,7 +5,7 @@ function SamplePrompts({ onPromptClick, isLoading, shouldShow = true }) {
     "How does Autumn navigate ambiguity?",
     "What challenging problems has Autumn worked on?",
     "Tell me about Autumn's leadership experience.",
-    "What makes Autumn passionate about her work?"
+    "Summarize Autumn's work history and achievements."
   ]
 
   if (!shouldShow) {
