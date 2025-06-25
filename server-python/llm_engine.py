@@ -1,5 +1,8 @@
 from llama_index.core import SimpleDirectoryReader, VectorStoreIndex, Document
 from llama_index.core.prompts import RichPromptTemplate
+from llama_index.core.retrievers import VectorIndexRetriever
+from llama_index.core.query_engine import RetrieverQueryEngine
+from llama_index.core.response_synthesizers import get_response_synthesizer
 from config import logger
 import inspect
 import os
@@ -72,12 +75,44 @@ def load_weighted_documents():
     logger.info(f"✅ Loaded {len(unique_documents)} unique documents with weights")
     return unique_documents
 
+class WeightedRetriever(VectorIndexRetriever):
+    """Custom retriever that considers document weights during retrieval"""
+    
+    def retrieve(self, query_bundle):
+        # Get base retrieval results
+        base_results = super().retrieve(query_bundle)
+        
+        # Apply weights to scores
+        for result in base_results:
+            weight = result.node.metadata.get('weight', 1.0)
+            # Boost score based on document weight
+            result.score = result.score * weight
+            logger.debug(f"Retrieved: {result.node.metadata.get('file_name', 'unknown')} "
+                        f"(weight: {weight}, score: {result.score})")
+        
+        # Re-sort by weighted scores
+        base_results.sort(key=lambda x: x.score, reverse=True)
+        
+        return base_results
+
 # Load and index documents with weights
 documents = load_weighted_documents()
 index = VectorStoreIndex.from_documents(documents)
 custom_prompt_template = get_prompt()
-query_engine = index.as_query_engine(
+
+# Create weighted retriever
+weighted_retriever = WeightedRetriever(index)
+
+# Create response synthesizer with custom prompt
+response_synthesizer = get_response_synthesizer(
     text_qa_template=custom_prompt_template
 )
-logger.info("✅ LlamaIndex query engine ready")
+
+# Create query engine with weighted retriever
+query_engine = RetrieverQueryEngine(
+    retriever=weighted_retriever,
+    response_synthesizer=response_synthesizer
+)
+
+logger.info("✅ LlamaIndex query engine ready with weighted retrieval")
 logger.info(inspect.signature(query_engine.query)) 
