@@ -1,10 +1,12 @@
 from fastapi import APIRouter, HTTPException
 from llm_engine import query_engine
 from models import QueryRequest
+from agent import AutBotAgent
 from __version__ import __version__, CHANGELOG
 import logging
 
 logger = logging.getLogger(__name__)
+agent = AutBotAgent(query_engine)
 
 router = APIRouter()
 
@@ -29,24 +31,6 @@ async def query_route(req: QueryRequest):
         raise HTTPException(status_code=400, detail="Query must be a string")
 
     try:
-        result = query_engine.query(req.query)
-        response_text = str(result)
-        
-        # Extract source context for debugging/testing
-        context = []
-        if hasattr(result, 'source_nodes'):
-            context = [node.text for node in result.source_nodes]
-        
-        # Structured logging for easy extraction
-        logger.info(f"AUTBOT_QUERY: {req.query}")
-        logger.info(f"AUTBOT_RESPONSE: {response_text}")
-        logger.info(f"AUTBOT_CONTEXT: {len(context)} chunks ")
-        for i, chunk in enumerate(context):
-            logger.info(f"AUTBOT_CONTEXT_{i}: {chunk}")
-        
-        return {
-            "response": response_text,
-            "context": context
-        }
+        return await agent.get_response(req.query)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e)) 
+        raise HTTPException(status_code=500, detail=str(e))
