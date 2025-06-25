@@ -23,6 +23,13 @@ This directory contains all the React components for the AutBot application, org
 - Matches app styling with hover effects and disabled states
 - Pure presentational component with no internal state
 
+### `StructuredResponse.jsx`
+- Displays structured JSON responses with summary, details, and fun facts sections
+- Parses JSON responses and falls back to plain text if parsing fails
+- Uses distinct styling for each section (sky blue for summary, stone for details, lime for fun facts)
+- Includes icons and proper typography for better readability
+- Handles error states and empty responses gracefully
+
 ### `ResponseDisplay.jsx`
 - Shows API responses and error messages
 - Conditionally renders based on error/response state
@@ -37,7 +44,7 @@ This directory contains all the React components for the AutBot application, org
 Components are exported through `index.js` for clean imports:
 
 ```jsx
-import { Header, QueryForm, ResponseDisplay, Footer, SamplePrompts } from './components'
+import { Header, QueryForm, StructuredResponse, Footer, SamplePrompts } from './components'
 ```
 
 ## Design Principles
