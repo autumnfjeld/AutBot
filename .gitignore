@@ -1,15 +1,3 @@
-# Dependencies
-node_modules/
-/.pnp
-.pnp.js
-
-# Testing
-/coverage
-
-# Production
-/build
-/dist
-
 # Environment files
 .env
 .env.local
@@ -38,6 +26,24 @@ yarn-error.log*
 server/node_modules/
 server/.env
 
+# Python cache files
+# __pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+
+# Server Python specific
+server-python/__pycache__/
+server-python/*.py[cod]
+server-python/*$py.class
+server-python/.env
+server-python/query_log.csv
+server-python/venv/
+server-python/.venv/
+server-python/ENV/
+server-python/*.egg-info/
+
+
 # Client specific
 client/node_modules/
 client/.env
@@ -49,4 +55,5 @@ client/build/
 .env.local
 .env.development.local
 .env.test.local
-.env.production.local 
+.env.production.local
+notes.md
