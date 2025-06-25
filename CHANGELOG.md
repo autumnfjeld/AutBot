@@ -2,6 +2,16 @@
 
 Notable changes and learnings in the AutBot project
 
+### 2025 June 3 - Client v0.3.0
+- **Major React App Refactoring**: Restructured the entire client-side codebase following React best practices
+  - Broke down monolithic `App.jsx` (147 lines) into focused, reusable components
+  - Created organized component structure: `Header`, `QueryForm`, `ResponseDisplay`, `Footer`
+  - Implemented custom `useQuery` hook for API state management and business logic separation
+  - Added clean import/export patterns with index files for better developer experience
+  - Applied React principles: single responsibility, composition over inheritance, props down/events up
+  - Improved maintainability, testability, and code organization
+  - Added component documentation for future development
+
 ### 2025 May 27
 - Added simple query and response logging and a daily cron job to make daily local copies of heroku logs.
 
