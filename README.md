@@ -3,7 +3,7 @@
 A personal project to explore Retrieval-Augmented Generation (RAG).  A tool to learn about Autumn's work and life experiences. 
 
 
-👩‍🔬 Prototype now live at https://autbot.vercel.app/.  
+👩‍🔬 Live at https://autbot.vercel.app/.  
 
 Check out the [the AutBot issues]([url](https://github.com/autumnfjeld/AutBot/issues)) if you want to see what's coming next. Add an issue if you want to give me feedback.   
 
