@@ -1,26 +1,32 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
-function QueryForm({ onSubmit, isLoading, externalInputValue }) {
-  const [inputValue, setInputValue] = useState('')
+interface QueryFormProps {
+  onSubmit: (query: string) => void;
+  isLoading: boolean;
+  externalInputValue?: string;
+}
+
+const QueryForm: React.FC<QueryFormProps> = ({ onSubmit, isLoading, externalInputValue }) => {
+  const [inputValue, setInputValue] = useState<string>('');
 
   // Update input when external value changes (from sample prompts)
   useEffect(() => {
     if (externalInputValue) {
-      setInputValue(externalInputValue)
+      setInputValue(externalInputValue);
     }
-  }, [externalInputValue])
+  }, [externalInputValue]);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value)
-  }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setInputValue(e.target.value);
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!inputValue.trim()) return
-    
-    onSubmit(inputValue)
-    setInputValue('') // Clear input after submission
-  }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+
+    onSubmit(inputValue);
+    setInputValue(''); // Clear input after submission
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -34,20 +40,20 @@ function QueryForm({ onSubmit, isLoading, externalInputValue }) {
           disabled={isLoading}
         />
       </div>
-      
-      <button 
+
+      <button
         type="submit"
         disabled={isLoading || !inputValue.trim()}
         className={`w-full p-3 text-white text-lg font-medium rounded-md transition-colors ${
-          isLoading 
-            ? 'bg-stone-400 cursor-not-allowed' 
+          isLoading
+            ? 'bg-stone-400 cursor-not-allowed'
             : 'bg-lime-700 hover:bg-lime-900'
         }`}
       >
         {isLoading ? 'Thinking...' : 'Ask'}
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default QueryForm 
+export default QueryForm;

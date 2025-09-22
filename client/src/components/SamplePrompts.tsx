@@ -1,15 +1,22 @@
-import RobotIcon from '../assets/RobotIcon'
+import React from 'react';
+import RobotIcon from '../assets/RobotIcon';
 
-function SamplePrompts({ onPromptClick, isLoading, shouldShow = true }) {
+interface SamplePromptsProps {
+  onPromptClick: (prompt: string) => void;
+  isLoading: boolean;
+  shouldShow?: boolean;
+}
+
+const SamplePrompts: React.FC<SamplePromptsProps> = ({ onPromptClick, isLoading, shouldShow = true }) => {
   const samplePrompts = [
     "How does Autumn navigate ambiguity?",
     "What challenging problems has Autumn worked on?",
     "Tell me about Autumn's leadership experience.",
     "Summarize Autumn's work history and achievements."
-  ]
+  ];
 
   if (!shouldShow) {
-    return null
+    return null;
   }
 
   return (
@@ -33,7 +40,7 @@ function SamplePrompts({ onPromptClick, isLoading, shouldShow = true }) {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SamplePrompts 
+export default SamplePrompts;

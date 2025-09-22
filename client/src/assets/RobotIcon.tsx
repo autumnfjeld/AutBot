@@ -1,4 +1,10 @@
-function RobotIcon({ className = "w-5 h-5" }) {
+import React from 'react';
+
+interface RobotIconProps {
+  className?: string;
+}
+
+const RobotIcon: React.FC<RobotIconProps> = ({ className = "w-5 h-5" }) => {
   return (
     <svg 
       className={`${className} text-lime-700`}
@@ -18,7 +24,7 @@ function RobotIcon({ className = "w-5 h-5" }) {
       {/* Mouth */}
       <rect x="10" y="15" width="4" height="1.5" rx="0.5" fill="white" />
     </svg>
-  )
-}
+  );
+};
 
-export default RobotIcon 
+export default RobotIcon;

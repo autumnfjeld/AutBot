@@ -1,6 +1,13 @@
-function ResponseDisplay({ error, response }) {
+import React from 'react';
+
+interface ResponseDisplayProps {
+  error?: string;
+  response?: string;
+}
+
+const ResponseDisplay: React.FC<ResponseDisplayProps> = ({ error, response }) => {
   if (!error && !response) {
-    return null
+    return null;
   }
 
   return (
@@ -17,7 +24,7 @@ function ResponseDisplay({ error, response }) {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ResponseDisplay 
+export default ResponseDisplay;

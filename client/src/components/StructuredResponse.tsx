@@ -1,36 +1,53 @@
-function StructuredResponse({ response, error, query }) {
-  // Reusable query display component
-  const QueryDisplay = ({ query }) => {
-    if (!query) return null
-    
-    return (
-      <div className="mb-3">
-        <div className="text-xs text-stone-500 font-medium uppercase tracking-wide mb-1">
-          You asked
-        </div>
-        <div className="text-stone-700 font-normal italic leading-relaxed">
-          {query}
-        </div>
-      </div>
-    )
-  }
+import React from 'react';
 
+interface StructuredResponseProps {
+  response?: string;
+  error?: string;
+  query?: string;
+}
+
+interface ParsedResponse {
+  summary?: string;
+  details?: string;
+  fun_facts?: string;
+}
+
+interface QueryDisplayProps {
+  query?: string;
+}
+
+const QueryDisplay: React.FC<QueryDisplayProps> = ({ query }) => {
+  if (!query) return null;
+  
+  return (
+    <div className="mb-3">
+      <div className="text-xs text-stone-500 font-medium uppercase tracking-wide mb-1">
+        You asked
+      </div>
+      <div className="text-stone-700 font-normal italic leading-relaxed">
+        {query}
+      </div>
+    </div>
+  );
+};
+
+const StructuredResponse: React.FC<StructuredResponseProps> = ({ response, error, query }) => {
   if (error) {
     return (
       <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-md">
         <p className="text-red-600">{error}</p>
       </div>
-    )
+    );
   }
 
   if (!response) {
-    return null
+    return null;
   }
 
   // Try to parse JSON response
-  let parsedResponse
+  let parsedResponse: ParsedResponse;
   try {
-    parsedResponse = JSON.parse(response)
+    parsedResponse = JSON.parse(response);
   } catch {
     // If not JSON, display as plain text
     return (
@@ -40,10 +57,10 @@ function StructuredResponse({ response, error, query }) {
           <p className="text-stone-700 whitespace-pre-wrap">{response}</p>
         </div>
       </div>
-    )
+    );
   }
 
-  const { summary, details, fun_facts } = parsedResponse
+  const { summary, details, fun_facts } = parsedResponse;
 
   return (
     <div className="mt-6">
@@ -91,7 +108,7 @@ function StructuredResponse({ response, error, query }) {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StructuredResponse 
+export default StructuredResponse;

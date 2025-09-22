@@ -2,6 +2,16 @@
 
 Notable changes and learnings in the AutBot project
 
+### 2025 September 22 - Client v0.4.0
+- Migrate client to TypeScript end-to-end following project rules
+  - Converted components: `Header`, `Footer`, `SamplePrompts`, `QueryForm`, `ResponseDisplay`, `StructuredResponse`
+  - Converted app entry and shell: `main.tsx`, `App.tsx`, barrel `components/index.ts`
+  - Converted hooks: `useQuery.ts`, `hooks/index.ts` with strict typings
+  - Converted assets and config: `RobotIcon.tsx`, `config.ts`
+  - Added image module declarations `src/types/assets.d.ts`
+  - Updated dev script to `vite --host 0.0.0.0` for local reliability
+  - Ensured no linter errors across new TS files
+
 ### 2025 June 3 - Client v0.3.0
 - **Major React App Refactoring**: Restructured the entire client-side codebase following React best practices
   - Broke down monolithic `App.jsx` (147 lines) into focused, reusable components

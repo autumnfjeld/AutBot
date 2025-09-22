@@ -1,6 +1,7 @@
-import autLogo from '../assets/aut-cartoon-from-miami.png'
+import React from 'react';
+import autLogo from '../assets/aut-cartoon-from-miami.png';
 
-function Header() {
+const Header: React.FC = () => {
   return (
     <header className="text-center mb-8">
       <h1 className="text-4xl font-heading mb-4 text-sky-700">The Aut Bot</h1>
@@ -18,7 +19,7 @@ function Header() {
       </a>
       <p className="text-stone-600 mt-4">Autumn's interactive resume.</p>
     </header>
-  )
-}
+  );
+};
 
-export default Header 
+export default Header;

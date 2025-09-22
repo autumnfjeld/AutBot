@@ -1,6 +1,0 @@
-export { default as Header } from './Header'
-export { default as QueryForm } from './QueryForm'
-export { default as ResponseDisplay } from './ResponseDisplay'
-export { default as Footer } from './Footer'
-export { default as SamplePrompts } from './SamplePrompts'
-export { default as StructuredResponse } from './StructuredResponse' 
