@@ -1,0 +1,106 @@
+---
+description: Code conventions for react and typescript
+globs: 
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/*.js"
+alwaysApply: true
+---
+
+
+# App Entrypoint Convention
+
+- The entry file should import the `App` component, wrap it with required providers (e.g., Router, Context), and render it as the root of your React tree.
+- No business logic should be in the entry file outside initialization.
+- The App component should be thin, containing only essentials at the App level.
+- Example:
+
+```tsx
+//main.tsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./components/App";
+import { Provider } from "./provider";
+
+const root = createRoot(document.getElementById("root") as HTMLElement);
+root.render(
+  <Provider>
+    <App />
+  </Provider>
+);
+```
+
+
+# Code style
+
+- Functional React components with hooks (`useState`, `useReducer`, `useContext`).
+- Modern React convention per React 19.
+- Props must be typed using TypeScript `interface`.
+- Always declare React components as `const Name: React.FC<Props> = (...) => {}`, and not `function Name(...) {}`.
+- File naming: kebab-case for files, PascalCase for React components.
+- Custom hooks must start with `use`.
+- Use the simplest approach possible, do not over-engineer the code.
+
+# TypeScript Conventions
+
+- Use strict TypeScript configuration with `strict: true`.
+- Prefer `interface` over `type` for object shapes, use `type` for unions and primitives.
+- Always define return types for functions that return values.
+- Use `const assertions` for immutable data: `const colors = ['red', 'blue'] as const`.
+- Prefer `unknown` over `any` when type is truly unknown.
+- Use generic constraints: `function identity<T extends string>(arg: T): T`.
+
+# Component Structure
+
+- Keep components small and focused on a single responsibility.
+- Extract complex logic into custom hooks.
+- Use composition over inheritance.
+- Prefer controlled components over uncontrolled when possible.
+- Always handle loading and error states explicitly.
+
+# State Management
+
+- Use `useState` for local component state.
+- Use `useReducer` for complex state logic with multiple sub-values.
+- Use `useContext` for sharing state across component tree.
+- Consider state colocation - keep state close to where it's used.
+- Avoid prop drilling - use context or state management library when needed.
+
+# Performance
+
+- Use `React.memo()` for components that receive stable props.
+- Use `useMemo()` for expensive calculations.
+- Use `useCallback()` for functions passed to child components.
+- Avoid creating objects/functions in render method.
+- Use `React.lazy()` and `Suspense` for code splitting.
+
+# Error Handling
+
+- Always wrap async operations in try-catch blocks.
+- Use Error Boundaries for component tree error handling.
+- Provide meaningful error messages to users.
+- Log errors appropriately for debugging.
+
+# Testing
+
+- Write unit tests for custom hooks and utility functions.
+- Use React Testing Library for component testing.
+- Test user interactions, not implementation details.
+- Mock external dependencies appropriately.
+
+# Accessibility
+
+- Use semantic HTML elements.
+- Provide proper ARIA labels and roles.
+- Ensure keyboard navigation works.
+- Test with screen readers when possible.
+- Use proper heading hierarchy (h1, h2, h3, etc.).
+
+# File Organization
+
+- One component per file.
+- Co-locate related files (component, styles, tests).
+- Use index files for clean imports.
+- Group imports: React, third-party, local.
+- Use absolute imports for deeply nested components.
