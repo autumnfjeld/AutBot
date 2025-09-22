@@ -1,0 +1,80 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fefefe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5f5f4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#84cc16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#65a30d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative background elements -->
+  <circle cx="150" cy="150" r="100" fill="#84cc16" opacity="0.05"/>
+  <circle cx="1050" cy="480" r="120" fill="#84cc16" opacity="0.05"/>
+  <circle cx="300" cy="500" r="60" fill="#84cc16" opacity="0.05"/>
+  
+  <!-- Main content container -->
+  <rect x="100" y="100" width="1000" height="430" rx="30" fill="white" stroke="#84cc16" stroke-width="2" opacity="0.95"/>
+  
+  <!-- Left side - Image placeholder -->
+  <rect x="150" y="150" width="300" height="330" rx="20" fill="#f5f5f4" stroke="#84cc16" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="300" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#84cc16" font-weight="bold">
+    Autumn's Cartoon
+  </text>
+  <text x="300" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#78716c">
+    (Image will be placed here)
+  </text>
+  
+  <!-- Right side - Text content -->
+  <g transform="translate(500, 150)">
+    <!-- Main title -->
+    <text x="0" y="60" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="url(#textGradient)">
+      AutBot
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="100" font-family="Arial, sans-serif" font-size="28" fill="#57534e" font-weight="500">
+      Autumn's Interactive Resume
+    </text>
+    
+    <!-- Description -->
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="20" fill="#78716c" font-weight="normal">
+      AI-powered chatbot to learn about
+    </text>
+    <text x="0" y="180" font-family="Arial, sans-serif" font-size="20" fill="#78716c" font-weight="normal">
+      Autumn's work experience and skills
+    </text>
+    
+    <!-- Features -->
+    <g transform="translate(0, 220)">
+      <circle cx="15" cy="15" r="8" fill="#84cc16"/>
+      <text x="35" y="20" font-family="Arial, sans-serif" font-size="18" fill="#57534e">
+        Ask questions about experience
+      </text>
+      
+      <circle cx="15" cy="50" r="8" fill="#84cc16"/>
+      <text x="35" y="55" font-family="Arial, sans-serif" font-size="18" fill="#57534e">
+        Get detailed responses
+      </text>
+      
+      <circle cx="15" cy="85" r="8" fill="#84cc16"/>
+      <text x="35" y="90" font-family="Arial, sans-serif" font-size="18" fill="#57534e">
+        Learn about skills & background
+      </text>
+    </g>
+  </g>
+  
+  <!-- Bottom URL -->
+  <text x="600" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#78716c" font-weight="500">
+    autbot.vercel.app
+  </text>
+  
+  <!-- Decorative accent -->
+  <rect x="100" y="100" width="1000" height="8" fill="url(#textGradient)" rx="4"/>
+</svg> 
