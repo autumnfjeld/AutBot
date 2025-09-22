@@ -8,4 +8,14 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  test: {
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    css: true,
+    environmentOptions: {
+      jsdom: {
+        url: 'http://127.0.0.1/',
+      },
+    },
+  }
 })
