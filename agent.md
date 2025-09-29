@@ -96,6 +96,9 @@ server-python/
 - **GET** `/api/test`
 - **Purpose**: Verify server status
 
+### Important
+- Follow code convention rules in .cursor/rules/react-typescript.mdc
+
 ## Testing
 
 ### Frontend Testing
