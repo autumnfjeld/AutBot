@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import './index.css';
-import { Header, QueryForm, StructuredResponse, Footer, SamplePrompts } from './components';
+import {
+  Header,
+  QueryForm,
+  StructuredResponse,
+  Footer,
+  SamplePrompts,
+} from './components';
 import { useQuery } from './hooks';
 
 const App: React.FC = () => {
   const { response, isLoading, error, submitQuery } = useQuery();
   const [selectedPrompt, setSelectedPrompt] = useState<string>('');
-  const [hasUsedSamplePrompt, setHasUsedSamplePrompt] = useState<boolean>(false);
+  const [hasUsedSamplePrompt, setHasUsedSamplePrompt] =
+    useState<boolean>(false);
   const [currentQuery, setCurrentQuery] = useState<string>('');
 
   const handlePromptClick = (prompt: string): void => {
@@ -30,17 +37,21 @@ const App: React.FC = () => {
       <Header />
 
       <section className="w-full max-w-md">
-        <QueryForm 
+        <QueryForm
           onSubmit={handleSubmit}
-          isLoading={isLoading} 
+          isLoading={isLoading}
           externalInputValue={selectedPrompt}
         />
-        <SamplePrompts 
-          onPromptClick={handlePromptClick} 
+        <SamplePrompts
+          onPromptClick={handlePromptClick}
           isLoading={isLoading}
           shouldShow={shouldShowSamplePrompts}
         />
-        <StructuredResponse error={error} response={response} query={currentQuery} />
+        <StructuredResponse
+          error={error}
+          response={response}
+          query={currentQuery}
+        />
       </section>
 
       <Footer />

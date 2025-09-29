@@ -6,7 +6,11 @@ interface QueryFormProps {
   externalInputValue?: string;
 }
 
-const QueryForm: React.FC<QueryFormProps> = ({ onSubmit, isLoading, externalInputValue }) => {
+const QueryForm: React.FC<QueryFormProps> = ({
+  onSubmit,
+  isLoading,
+  externalInputValue,
+}) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   // Update input when external value changes (from sample prompts)

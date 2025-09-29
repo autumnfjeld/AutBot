@@ -17,22 +17,22 @@ const useQuery = (): UseQueryReturn => {
   const submitQuery = async (query: string): Promise<void> => {
     setIsLoading(true);
     setError('');
-    
+
     try {
       const res = await fetch(`${API_BASE}/api/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ query })
+        body: JSON.stringify({ query }),
       });
-      
+
       const data = await res.json();
-      
+
       if (!res.ok) {
         throw new Error(data.error || 'Something went wrong');
       }
-      
+
       setResponse(data.response);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -51,7 +51,7 @@ const useQuery = (): UseQueryReturn => {
     isLoading,
     error,
     submitQuery,
-    clearError
+    clearError,
   };
 };
 

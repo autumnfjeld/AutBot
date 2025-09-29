@@ -7,12 +7,16 @@ interface SamplePromptsProps {
   shouldShow?: boolean;
 }
 
-const SamplePrompts: React.FC<SamplePromptsProps> = ({ onPromptClick, isLoading, shouldShow = true }) => {
+const SamplePrompts: React.FC<SamplePromptsProps> = ({
+  onPromptClick,
+  isLoading,
+  shouldShow = true,
+}) => {
   const samplePrompts = [
-    "How does Autumn navigate ambiguity?",
-    "What challenging problems has Autumn worked on?",
+    'How does Autumn navigate ambiguity?',
+    'What challenging problems has Autumn worked on?',
     "Tell me about Autumn's leadership experience.",
-    "Summarize Autumn's work history and achievements."
+    "Summarize Autumn's work history and achievements.",
   ];
 
   if (!shouldShow) {

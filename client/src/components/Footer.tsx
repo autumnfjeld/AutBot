@@ -5,9 +5,9 @@ const Footer: React.FC = () => {
     <footer className="mt-24 w-full max-w-md">
       <div className="flex flex-col items-center space-y-4">
         <div className="flex items-center space-x-6">
-          <a 
-            href="https://github.com/autumnfjeld/AutBot" 
-            target="_blank" 
+          <a
+            href="https://github.com/autumnfjeld/AutBot"
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 text-sky-700 hover:text-sky-900 transition-colors"
           >

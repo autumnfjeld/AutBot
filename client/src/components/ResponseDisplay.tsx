@@ -5,7 +5,10 @@ interface ResponseDisplayProps {
   response?: string;
 }
 
-const ResponseDisplay: React.FC<ResponseDisplayProps> = ({ error, response }) => {
+const ResponseDisplay: React.FC<ResponseDisplayProps> = ({
+  error,
+  response,
+}) => {
   if (!error && !response) {
     return null;
   }

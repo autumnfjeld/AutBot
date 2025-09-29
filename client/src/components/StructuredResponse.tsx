@@ -18,7 +18,7 @@ interface QueryDisplayProps {
 
 const QueryDisplay: React.FC<QueryDisplayProps> = ({ query }) => {
   if (!query) return null;
-  
+
   return (
     <div className="mb-3">
       <div className="text-xs text-stone-500 font-medium uppercase tracking-wide mb-1">
@@ -31,7 +31,11 @@ const QueryDisplay: React.FC<QueryDisplayProps> = ({ query }) => {
   );
 };
 
-const StructuredResponse: React.FC<StructuredResponseProps> = ({ response, error, query }) => {
+const StructuredResponse: React.FC<StructuredResponseProps> = ({
+  response,
+  error,
+  query,
+}) => {
   if (error) {
     return (
       <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-md">
@@ -78,8 +82,16 @@ const StructuredResponse: React.FC<StructuredResponseProps> = ({ response, error
           {details && (
             <div>
               <h3 className="text-sm font-semibold text-stone-800 mb-2 flex items-center">
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                <svg
+                  className="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
                 Experience
               </h3>
@@ -97,8 +109,16 @@ const StructuredResponse: React.FC<StructuredResponseProps> = ({ response, error
           {fun_facts && (
             <div>
               <h3 className="text-sm font-semibold text-lime-900 mb-2 flex items-center">
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                <svg
+                  className="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clipRule="evenodd"
+                  />
                 </svg>
                 Fun Facts
               </h3>
