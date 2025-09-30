@@ -1,6 +1,13 @@
+# Core Framework
 fastapi==0.110.0
-llama-index
-openai
-python-dotenv==1.0.1
 uvicorn==0.29.0
+
+# LLM & AI
+llama-index==0.14.3
+openai==1.109.1
+
+# Configuration & Environment
+python-dotenv==1.0.1
+
+# Testing
 pytest==8.0.0
