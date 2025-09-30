@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
+import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from '@typescript-eslint/eslint-plugin';
@@ -21,6 +22,7 @@ export default [
       },
     },
     plugins: {
+      react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       prettier: prettier,
@@ -30,11 +32,17 @@ export default [
       ...prettierConfig.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'prettier/prettier': 'error',
+      // Disable Prettier rule to avoid conflicts with JSX prop formatting
+      'prettier/prettier': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+      // Enforce one prop per line in JSX
+      'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'always' }],
+    },
+    settings: {
+      react: { version: 'detect' },
     },
   },
   {
@@ -52,6 +60,7 @@ export default [
     },
     plugins: {
       '@typescript-eslint': tseslint,
+      react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       prettier: prettier,
@@ -67,11 +76,27 @@ export default [
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-inferrable-types': 'error',
-      'prettier/prettier': 'error',
+      // Disable Prettier rule to avoid conflicts with JSX prop formatting
+      'prettier/prettier': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+      // Enforce one prop per line in JSX
+      'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'always' }],
+    },
+    settings: {
+      react: { version: 'detect' },
+    },
+  },
+  // Tests override: allow single-line props in tests for readability
+  {
+    files: [
+      '**/__tests__/**/*.{js,jsx,ts,tsx}',
+      '**/*.{spec,test}.{js,jsx,ts,tsx}',
+    ],
+    rules: {
+      'react/jsx-max-props-per-line': 'off',
     },
   },
 ];

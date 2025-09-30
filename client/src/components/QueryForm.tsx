@@ -33,6 +33,7 @@ const QueryForm: React.FC<QueryFormProps> = ({
   };
 
   return (
+    // eslint-disable-next-line react/jsx-max-props-per-line
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="relative">
         <input

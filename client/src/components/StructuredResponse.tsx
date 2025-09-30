@@ -97,6 +97,7 @@ const StructuredResponse: React.FC<StructuredResponseProps> = ({
               </h3>
               <div className="text-stone-700 space-y-2">
                 {details.split('\n\n').map((paragraph, index) => (
+                  // eslint-disable-next-line react/jsx-max-props-per-line
                   <p key={index} className="leading-relaxed">
                     {paragraph}
                   </p>
