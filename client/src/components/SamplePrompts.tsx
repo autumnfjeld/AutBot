@@ -4,13 +4,13 @@ import RobotIcon from '../assets/RobotIcon';
 interface SamplePromptsProps {
   onPromptClick: (prompt: string) => void;
   isLoading: boolean;
-  shouldShow?: boolean;
+  showSamplePrompts?: boolean;
 }
 
 const SamplePrompts: React.FC<SamplePromptsProps> = ({
   onPromptClick,
   isLoading,
-  shouldShow = true,
+  showSamplePrompts = true,
 }) => {
   const samplePrompts = [
     'How does Autumn navigate ambiguity?',
@@ -19,7 +19,7 @@ const SamplePrompts: React.FC<SamplePromptsProps> = ({
     "Summarize Autumn's work history and achievements.",
   ];
 
-  if (!shouldShow) {
+  if (!showSamplePrompts) {
     return null;
   }
 

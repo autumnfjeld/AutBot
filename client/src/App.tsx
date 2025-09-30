@@ -12,16 +12,13 @@ import { useQuery } from './hooks';
 const App: React.FC = () => {
   const { response, isLoading, error, submitQuery } = useQuery();
   const [selectedPrompt, setSelectedPrompt] = useState<string>('');
-  const [hasUsedSamplePrompt, setHasUsedSamplePrompt] =
-    useState<boolean>(false);
   const [currentQuery, setCurrentQuery] = useState<string>('');
 
-  const handlePromptClick = (prompt: string): void => {
+  const handleSamplePromptClick = (prompt: string): void => {
     setSelectedPrompt(prompt);
-    setHasUsedSamplePrompt(true);
     setCurrentQuery(prompt);
     // Clear the selected prompt after setting it so it can be set again
-    setTimeout(() => setSelectedPrompt(''), 100);
+    setTimeout(() => setSelectedPrompt(''), 500);
   };
 
   const handleSubmit = (query: string): void => {
@@ -29,8 +26,8 @@ const App: React.FC = () => {
     submitQuery(query);
   };
 
-  // Hide sample prompts if user used one and there's a response or error
-  const shouldShowSamplePrompts = !hasUsedSamplePrompt || (!response && !error);
+  // Show sample prompts only when there is no response and no error 
+  const showSamplePrompts = !response && !error;
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-6 robot-bg">
@@ -43,9 +40,9 @@ const App: React.FC = () => {
           externalInputValue={selectedPrompt}
         />
         <SamplePrompts
-          onPromptClick={handlePromptClick}
+          onPromptClick={handleSamplePromptClick}
           isLoading={isLoading}
-          shouldShow={shouldShowSamplePrompts}
+          showSamplePrompts={showSamplePrompts}
         />
         <StructuredResponse
           error={error}
