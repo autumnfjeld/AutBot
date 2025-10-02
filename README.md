@@ -13,6 +13,7 @@ Check out the [the AutBot issues]([url](https://github.com/autumnfjeld/AutBot/is
 ### React App
 * `npm install`
 * `npm run dev`
+* Client uns on port 5432, http://localhost:5432
 
 ### Python server
 * `python3 -m venv venvautbot`
