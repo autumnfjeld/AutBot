@@ -24,7 +24,8 @@ const Footer: React.FC = () => {
         </div>
         <div className="flex items-center space-x-6">
           <a
-            href="public/AutumnFjeld_Resume_20250527.pdf"
+            href="AutumnFjeld_EM_Resume_20250527.pdf"
+            download="AutumnFjeld_EM_Resume_20250527.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-lime-700 hover:text-lime-900 transition-colors"
