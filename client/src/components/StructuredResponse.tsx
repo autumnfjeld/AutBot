@@ -1,4 +1,6 @@
 import React from 'react';
+import ListIcon from '../assets/ListIcon';
+import PlayIcon from '../assets/PlayIcon';
 
 interface StructuredResponseProps {
   response?: string;
@@ -82,17 +84,7 @@ const StructuredResponse: React.FC<StructuredResponseProps> = ({
           {details && (
             <div>
               <h3 className="text-sm font-semibold text-stone-800 mb-2 flex items-center">
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <ListIcon className="w-5 h-5 mr-2 mb-0.5" />
                 Experience
               </h3>
               <div className="text-stone-700 space-y-2">
@@ -110,17 +102,7 @@ const StructuredResponse: React.FC<StructuredResponseProps> = ({
           {fun_facts && (
             <div>
               <h3 className="text-sm font-semibold text-lime-900 mb-2 flex items-center">
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <PlayIcon className="w-5 h-5 mr-2 mb-0.5" />
                 Fun Facts
               </h3>
               <p className="text-lime-900 italic">{fun_facts}</p>
